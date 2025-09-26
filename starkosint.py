@@ -44,7 +44,6 @@ print(f"{Fore.GREEN}✅ Setup Complete. Starting CLI...")
 # NOTE: Replace with your actual token for use!
 from google.colab import userdata
 # Ensure you set a Colab secret named 'Api'
-# api if expired "7512673106:DQG1ZhRZ" , "8405044510:nBnKnQDd"
 API_TOKEN = userdata.get('Api')
 LANG = "ru"
 LIMIT = 300
