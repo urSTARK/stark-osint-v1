@@ -36,7 +36,7 @@ except pytesseract.TesseractNotFoundError:
 
 # === CONFIGURATION FOR LEAK OSINT (Source 2) ===
 # NOTE: Replace with your actual token for use!
-API_TOKEN = "7512673106:DQG1ZhRZ"
+API_TOKEN = ""
 LANG = "ru"
 LIMIT = 300
 URL = "https://leakosintapi.com/"
