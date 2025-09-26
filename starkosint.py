@@ -1,4 +1,3 @@
-
 # STEP 2: IMPORTS AND CONFIGURATION
 
 import requests
@@ -27,14 +26,16 @@ except ImportError:
     PIL_AVAILABLE = False
 
 # Set the path to the Tesseract executable installed by apt-get
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
-print(f"{Fore.GREEN}✅ Setup Complete. Starting CLI...")
+# NOTE: Ensure Tesseract is installed on your system (e.g., sudo apt-get install tesseract-ocr)
+try:
+    pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
+    print(f"{Fore.GREEN}✅ Setup Complete. Starting CLI...")
+except pytesseract.TesseractNotFoundError:
+    print(f"{Fore.RED}❌ Tesseract executable not found. OCR functionality will fail.")
+    print(f"{Fore.RED}   Please install Tesseract and update the path if necessary.")
 
 # === CONFIGURATION FOR LEAK OSINT (Source 2) ===
 # NOTE: Replace with your actual token for use!
-#from google.colab import userdata
-# Ensure you set a Colab secret named 'Api'
-# api if expired "7512673106:DQG1ZhRZ" , "8405044510:nBnKnQDd"
 API_TOKEN = "7512673106:DQG1ZhRZ"
 LANG = "ru"
 LIMIT = 300
@@ -64,26 +65,41 @@ def format_dict_output(title, details):
     output += f"{Fore.CYAN}{'=' * len(title)}\n"
     return output
 
-def handle_colab_image_upload():
-    """Prompts user to upload an image file in the environment."""
-    print(f"\n{Fore.YELLOW}--- Image Upload Required ---")
+def handle_terminal_image_upload():
+    """Prompts user to enter a file path and reads the image file data."""
+    print(f"\n{Fore.YELLOW}--- Image File Path Required ---")
     try:
-        from google.colab import files
-        uploaded = files.upload()
+        # Get the file path from the user
+        file_path = input(f"{Fore.LIGHTGREEN_EX}Enter the path to the image file: {Style.RESET_ALL}").strip()
 
-        if not uploaded:
-            print(f"{Fore.RED}❌ No file uploaded. Returning to menu.")
+        if not file_path:
+            print(f"{Fore.RED}❌ No file path entered. Returning to menu.")
             return None, None
 
-        file_name = list(uploaded.keys())[0]
-        image_data = uploaded[file_name]
+        # Check if the file exists
+        if not os.path.exists(file_path):
+            print(f"{Fore.RED}❌ File not found at path: '{file_path}'")
+            return None, None
 
-        print(f"{Fore.GREEN}✅ File '{file_name}' uploaded successfully.")
+        # Read the file's binary data
+        with open(file_path, 'rb') as f:
+            image_data = f.read()
+
+        file_name = os.path.basename(file_path)
+
+        print(f"{Fore.GREEN}✅ File '{file_name}' loaded successfully.")
         return file_name, image_data
 
-    except Exception as e:
-        print(f"{Fore.RED}❌ Error during file upload: {e}")
+    except PermissionError:
+        print(f"{Fore.RED}❌ Permission denied to read the file.")
         return None, None
+    except IsADirectoryError:
+        print(f"{Fore.RED}❌ The path provided is a directory, not a file.")
+        return None, None
+    except Exception as e:
+        print(f"{Fore.RED}❌ Error during file reading: {e}")
+        return None, None
+
 
 def type_effect(text, delay=0.002):
     """Typing animation effect."""
@@ -442,8 +458,8 @@ def post_search_menu():
 
 def display_menu():
     """Displays the main menu options with colors."""
-    # os.system("cls" if os.name == "nt" else "clear") # Disabled for better Colab output history
-    print("\n" * 2) # Add some spacing instead of clearing the screen
+    # Use os.system("clear") if you want to clear the screen on each menu refresh
+    print("\n" * 2) # Add some spacing
     menu = f"""{Fore.RED}{Style.BRIGHT}
 {Fore.YELLOW}======================================================
 {Fore.WHITE}
@@ -510,7 +526,8 @@ def run_cli():
                 print(format_dict_output(f"🏦 SOURCE 1: IFSC Details for {param}", result))
 
             elif choice == '5':
-                file_name, image_data = handle_colab_image_upload()
+                # *** MODIFIED FOR TERMINAL USE ***
+                file_name, image_data = handle_terminal_image_upload()
                 if image_data:
                     exif_results = extract_exif_data(image_data)
                     print(format_dict_output(f"🖼 SOURCE 1: EXIF / Metadata for {file_name}", exif_results))
