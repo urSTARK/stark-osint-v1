@@ -26,7 +26,7 @@ First, clone the repository and navigate into the directory. Then, install the r
 ```Bash
 sudo apt update
 sudo apt install git python3 python3-pip
-git clone [YOUR_REPO_URL] starkosint
+git clone https://github.com/urSTARK/starkosint
 cd starkosint
 pip3 install -r requirements.txt
 # Alternatively, if you don't have a requirements.txt file, use this command:
@@ -72,7 +72,7 @@ Step 1: Get the Code and Install Python Dependencies
 
 pkg update && pkg upgrade -y
 pkg install git python python-pip
-git clone [YOUR_REPO_URL] starkosint
+git clone https://github.com/urSTARK/starkosint
 cd starkosint
 pip install -r requirements.txt
 # Alternatively:
@@ -117,7 +117,7 @@ Step 1: Get the Code and Install Python Dependencies
 
 ```Bash
 
-git clone [YOUR_REPO_URL] starkosint
+git clone https://github.com/urSTARK/starkosint
 cd starkosint
 pip3 install -r requirements.txt
 # Alternatively:
@@ -168,7 +168,7 @@ Open a Command Prompt or PowerShell, then execute these commands.
 
 ```Bash
 
-git clone [YOUR_REPO_URL] starkosint
+git clone https://github.com/urSTARK/starkosint
 cd starkosint
 pip install -r requirements.txt
 # Alternatively:
