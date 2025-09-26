@@ -22,6 +22,7 @@ ___
 
 ___
 
+
 # 🚀 Getting Started
 
 To get the tool up and running, follow these simple steps.
@@ -56,7 +57,7 @@ brew install tesseract
 
 ```
 git clone https://github.com/urSTARK/starkosint
-cd osint-cli
+cd starkosint
 ```
 
 2. Install the CLI tool using `pip`:
