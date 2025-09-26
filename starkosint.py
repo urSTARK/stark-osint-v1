@@ -1,13 +1,3 @@
-# STEP 1: INSTALL SYSTEM & PYTHON DEPENDENCIES
-
-print("Installing system dependencies (Tesseract OCR)...")
-# Install Tesseract OCR (system-level dependency)
-!apt-get update > /dev/null 2>&1
-!apt-get install -y tesseract-ocr > /dev/null 2>&1
-
-print("Installing Python libraries...")
-# Install Python libraries
-!pip install requests beautifulsoup4 pillow exifread pytesseract opencv-python numpy colorama > /dev/null 2>&1
 
 # STEP 2: IMPORTS AND CONFIGURATION
 
@@ -42,9 +32,10 @@ print(f"{Fore.GREEN}✅ Setup Complete. Starting CLI...")
 
 # === CONFIGURATION FOR LEAK OSINT (Source 2) ===
 # NOTE: Replace with your actual token for use!
-from google.colab import userdata
+#from google.colab import userdata
 # Ensure you set a Colab secret named 'Api'
-API_TOKEN = userdata.get('Api')
+# api if expired "7512673106:DQG1ZhRZ" , "8405044510:nBnKnQDd"
+API_TOKEN = "7512673106:DQG1ZhRZ"
 LANG = "ru"
 LIMIT = 300
 URL = "https://leakosintapi.com/"
