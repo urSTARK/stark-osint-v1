@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='stark-osint-v1',
+    name='starkosint',
     version='0.1.0',
     author='Stark',
     author_email='',
     description='A command-line tool for various OSINT lookups.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/urSTARK/stark-osint-v1',  # Replace with your GitHub URL
+    url='https://github.com/urSTARK/starkosint',  # Replace with your GitHub URL
     packages=find_packages(),
     install_requires=[
         'requests',
