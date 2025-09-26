@@ -1,0 +1,8 @@
+requests==2.32.3
+beautifulsoup4==4.12.3
+numpy==1.26.4
+opencv-python==4.9.0.80
+Pillow==10.3.0
+pytesseract==0.3.10
+exifread==3.0.0
+colorama==0.4.6
