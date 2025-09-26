@@ -1,7 +1,7 @@
 # 🔎 Stark OSINT CLI
 <!-- This image placeholder will be replaced with a cool banner once you have one! -->
 
-![Stark OSINT CLI Banner]
+<!--![Stark OSINT CLI Banner]-->
 
 A powerful, open-source command-line interface for conducting various OSINT (Open-Source Intelligence) lookups. This tool streamlines the process of gathering public data, from vehicle details to image metadata.
 
@@ -55,7 +55,7 @@ brew install tesseract
 1. Clone the repository from GitHub:
 
 ```
-git clone [https://github.com/stark/osint-cli.git](https://github.com/stark/osint-cli.git)
+git clone https://github.com/urSTARK/starkosint
 cd osint-cli
 ```
 
@@ -101,7 +101,7 @@ set LEAK_OSINT_API_TOKEN="your_api_token_here"
 ---
 
 2. Update the `starkosint.py` script:
-Change the API token line to read from the environment variable instead of Google Colab's user data:
+Change the API token line to read from the environment variable instead of Colab's user data:
 
 ```
 import os
