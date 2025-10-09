@@ -12,3 +12,6 @@ https://calltracer.in
 
 https://vahanx.in/rc-search/
 
+https://api.ipinfo.io/lite/8.8.8.8?token=8bb0f41210dbf0
+
+https://api.ipdata.co/8.8.8.8?api-key=e242255b22e54690bb6db2fe327f7e5dfe850ec444fbf924d20ba943
